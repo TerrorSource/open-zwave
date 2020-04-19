@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Product xmlns='http://code.google.com/p/open-zwave/'>
+    <!--
+    Fibaro FGWREU-111 Walli Roller Shutter
+	https://products.z-wavealliance.org/products/3396
+	https://products.z-wavealliance.org/products/3245
+    -->
+	
+    <!-- Configuration -->
+    <CommandClass id="112">
+
+    <Value type="list" genre="config" instance="1" index="11" label="LED frame – colour when moving" value="1" min="0" max="7" size="1">
+      <Help>This parameter defines the LED colour when the motor is running.</Help>
+      <Item label="LED disabled" value="0"/>
+      <Item label="White" value="1"/>
+      <Item label="Red" value="2"/>
+      <Item label="Green" value="3"/>
+      <Item label="Blue" value="4"/>
+      <Item label="Yellow" value="5"/>
+      <Item label="Cyan" value="6"/>
+      <Item label="Magenta" value="7"/>
+    </Value>
+
+    <Value type="list" genre="config" instance="1" index="12" label="LED frame – colour when not moving" value="0" min="0" max="7" size="1">
+      <Help>This parameter defines the LED colour when the device motor is not running.</Help>
+      <Item label="LED disabled" value="0"/>
+      <Item label="White" value="1"/>
+      <Item label="Red" value="2"/>
+      <Item label="Green" value="3"/>
+      <Item label="Blue" value="4"/>
+      <Item label="Yellow" value="5"/>
+      <Item label="Cyan" value="6"/>
+      <Item label="Magenta" value="7"/>
+    </Value>
+
+    <Value type="byte" genre="config" instance="1" index="13" label="LED frame – brightness" value="100" min="0" max="100" size="1">
+      <Help>
+        This parameter allows to adjust the LED frame brightness.
+        0 - LED disabled
+        1-100 - (1-100% brightness)
+      </Help>
+    </Value>
+
+    <Value type="list" genre="config" instance="1" index="24" label="Buttons orientation" value="0" min="0" max="1" size="1">
+      <Help>
+        This parameter allows reversing the operation of the buttons.
+
+        0 - default (1st button UP, 2nd button DOWN)
+        1 - reversed (1st button DOWN, 2nd button UP)
+      </Help>
+      <Item label="Default" value="0"/>
+      <Item label="Reversed" value="1"/>
+    </Value>
+
+    <Value type="list" genre="config" instance="1" index="25" label="Outputs orientation" value="0" min="0" max="1" size="1">
+      <Help>
+        This parameter allows reversing the operation of Q1 and Q2 without changing the wiring (e.g. in case of invalid motor connection).
+
+        0 - default (Q1 - UP, Q2 - DOWN)
+        1 - reversed (Q1 - DOWN, Q2 - UP)
+      </Help>
+      <Item label="Default" value="0"/>
+      <Item label="Reversed" value="1"/>
+    </Value>
+
+    <Value type="int" genre="config" instance="1" index="30" label="Alarm configuration - 1st slot" value="0" size="4">
+      <Help>
+        This parameter determines to which alarm frames and how the device should react.
+        The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.
+
+        1B [MSB] - Notification Type
+        2B - Notification Status
+        3B - Event/State Parameters
+        4B [LSB] - action:
+          0x00 - no action,
+          0xX1 - open,
+          0xX2 - close,
+          0x0X - no action on LED frame,
+          0x1X - LED frame blinks red,
+          0x2X - LED frame blinks green,
+          0x4X - LED frame blinks blue,
+          0x8X - dis- able LED frame,
+          0xFX - LED frame LAPD signal (red-white-blue)
+
+        Default value: [0x00, 0x00, 0x00, 0x00] (disabled)
+      </Help>
+    </Value>
+
+    <Value type="int" genre="config" instance="1" index="31" label="Alarm configuration - 2nd slot (Water)" value="1358888960" size="4">
+      <Help>
+        This parameter determines to which alarm frames and how the device should react.
+        The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.
+
+        1B [MSB] - Notification Type
+        2B – Notification Status
+        3B – Event/State Parameters
+        4B [LSB] – action:
+          0x00 - no action,
+          0xX1 - open,
+          0xX2 - close,
+          0x0X - no action on LED frame,
+          0x1X - LED frame blinks red,
+          0x2X - LED frame blinks green,
+          0x4X - LED frame blinks blue,
+          0x8X - dis- able LED frame,
+          0xFX - LED frame LAPD signal (red-white-blue)
+
+        Default value: [0x05, 0xFF, 0x00, 0x00] (Water Alarm, any notification, no action)
+      </Help>
+    </Value>
+
+    <Value type="int" genre="config" instance="1" index="32" label="Alarm configuration - 3rd slot (Smoke)" value="33488896" size="4">
+      <Help>
+        This parameter determines to which alarm frames and how the device should react.
+        The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.
+
+        1B [MSB] - Notification Type
+        2B - Notification Status
+        3B - Event/State Parameters
+        4B [LSB] - action:
+          0x00 - no action,
+          0xX1 - open,
+          0xX2 - close,
+          0x0X - no action on LED frame,
+          0x1X - LED frame blinks red,
+          0x2X - LED frame blinks green,
+          0x4X - LED frame blinks blue,
+          0x8X - dis- able LED frame,
+          0xFX - LED frame LAPD signal (red-white-blue)
+
+        Default value: [0x01, 0xFF, 0x00, 0x00] (Smoke Alarm, any notification, no action)
+      </Help>
+    </Value>
+
+    <Value type="int" genre="config" instance="1" index="33" label="Alarm configuration - 4th slot (CO)" value="1358888960" size="4">
+      <Help>
+        This parameter determines to which alarm frames and how the device should react.
+        The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.
+
+        1B [MSB] - Notification Type
+        2B - Notification Status
+        3B - Event/State Parameters
+        4B [LSB] - action:
+          0x00 - no action,
+          0xX1 - open,
+          0xX2 - close,
+          0x0X - no action on LED frame,
+          0x1X - LED frame blinks red,
+          0x2X - LED frame blinks green,
+          0x4X - LED frame blinks blue,
+          0x8X - dis- able LED frame,
+          0xFX - LED frame LAPD signal (red-white-blue)
+
+        Default value: [0x02, 0xFF, 0x00, 0x00] (CO Alarm, any notification, no action)
+      </Help>
+    </Value>
+
+    <Value type="int" genre="config" instance="1" index="34" label="Alarm configuration - 5th slot (Heat)" value="50266112" size="4">
+      <Help>
+        This parameter determines to which alarm frames and how the device should react.
+        The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.
+
+        1B [MSB] - Notification Type
+        2B - Notification Status
+        3B - Event/State Parameters
+        4B [LSB] - action:
+          0x00 - no action,
+          0xX1 - open,
+          0xX2 - close,
+          0x0X - no action on LED frame,
+          0x1X - LED frame blinks red,
+          0x2X - LED frame blinks green,
+          0x4X - LED frame blinks blue,
+          0x8X - dis- able LED frame,
+          0xFX - LED frame LAPD signal (red-white-blue)
+
+        Default value: [0x02, 0xFF, 0x00, 0x00] (CO Alarm, any notification, no action)
+      </Help>
+    </Value>
+
+    <Value type="short" genre="config" instance="1" index="35" label="Alarm configuration – duration" value="600" size="2">
+      <Help>
+        This parameter defines duration of alarm sequence.
+        When time set in this parameter elapses, alarm is cancelled, LED frame and relay restore normal operation, but do not recover state from before the alarm.
+
+        0 – infinite
+        1-32400 (1s-9h, 1s step) – duration
+
+        Default value: 600 (10min)
+      </Help>
+    </Value>
+
+    <Value type="byte" genre="config" instance="1" index="40" label="First button – scenes sent" value="0" size="1">
+      <Help>
+        This parameter determines which actions result in sending scene IDs assigned to them.
+        Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent).
+        Enabling scenes for triple click disables entering the device in learn mode by triple clicking.
+
+        1 - Key pressed 1 time
+        2 - Key pressed 2 times
+        4 - Key pressed 3 times
+        8 - Key hold down and key released
+
+        Default value: 0 (no scenes)
+      </Help>
+    </Value>
+
+    <Value type="byte" genre="config" instance="1" index="41" label="Second button – scenes sent" value="0" size="1">
+      <Help>
+        This parameter determines which actions result in sending scene IDs assigned to them.
+        Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent).
+        Enabling scenes for triple click disables entering the device in learn mode by triple clicking.
+
+        1 - Key pressed 1 time
+        2 - Key pressed 2 times
+        4 - Key pressed 3 times
+        8 - Key hold down and key released
+
+        Default value: 0 (no scenes)
+      </Help>
+    </Value>
+
+    <Value type="list" genre="config" instance="1" index="60" label="Power reports – include self-consumption" value="0" size="1">
+      <Help>This parameter determines whether the power measurements should include power consumed by the device itself.</Help>
+      <Item label="self-consumption not included" value="0"/>
+      <Item label="self-consumption included" value="1"/>
+    </Value>
+
+    <Value type="short" genre="config" instance="1" index="61" label="Power reports – on change" value="15" min="0" max="500" size="2">
+      <Help>
+        This parameter defines minimal change (from the last reported) in measured power that results in sending new report.
+        For loads under 50W the parameter is irrelevant, report are sent every 5W change.
+
+        0 - reporting on change disabled
+        1-500 (1-500%, 1% step) – minimal change
+
+        Default value: 15 (15%)
+      </Help>
+    </Value>
+
+    <Value type="short" genre="config" instance="1" index="62" label="Power reports - periodic" value="3600" min="0" max="32400" size="2">
+      <Help>
+        This parameter defines reporting interval for measured power.
+        Periodic reports are independent from changes in value (parameter 61).
+
+        0 – periodic reports disabled
+        30-32400 (30s-9h, 1s step) – time interval
+
+        Default value: 3600 (1h)
+      </Help>
+    </Value>
+
+    <Value type="short" genre="config" instance="1" index="65" label="Energy reports – on change" value="10" min="0" max="500" size="2">
+      <Help>
+        This parameter defines minimal change (from the last reported) in measured energy that results in sending new report.
+
+        0 - reporting on change disabled
+        1-500 (0.01-5kWh, 0.01kWh step) – minimal change
+
+        Default value: 10 (0.1kWh)
+      </Help>
+    </Value>
+
+    <Value type="short" genre="config" instance="1" index="66" label="Energy reports - periodic" value="3600" min="0" max="32400" size="2">
+      <Help>
+        This parameter defines reporting interval for measured energy.
+        Periodic reports are independent from changes in value (parameter 65).
+
+        0 – periodic reports disabled
+        30-32400 (30s-9h, 1s step) – time interval
+
+        Default value: 3600 (1h)
+      </Help>
+    </Value>
+
+    <Value type="list" genre="config" instance="1" index="150" label="Force calibration" value="0" size="1">
+      <Help>
+        By setting this parameter to 2 the device enters the calibration mode.
+        The parameter relevant only if the device is set to work in positioning mode (parameter 151 set to 1 or 2).
+      </Help>
+      <Item label="Device is not calibrated" value="0"/>
+      <Item label="Device is calibrated" value="1"/>
+      <Item label="Force device calibration" value="2"/>
+    </Value>
+
+    <Value type="list" genre="config" instance="1" index="151" label="Operating mode" value="1" size="1">
+      <Help>This parameter allows adjusting operation according to the connected device.</Help>
+      <Item label="Roller blind" value="1"/>
+      <Item label="Venetian blind" value="2"/>
+      <Item label="roller blind with built-in driver" value="5"/>
+      <Item label="roller blind with built-in driver (impulse)" value="6"/>
+    </Value>
+
+    <Value type="int" genre="config" instance="1" index="152" label="Venetian blind - time of full turn of the slats" value="150" min="0" max="65535" size="4">
+      <Help>
+        For Venetian blinds (parameter 151 set to 2) the parameter determines time of full turn cycle of the slats.
+        The parameter is irrelevant for other modes.
+
+        0-65535 (0 - 655.35s, every 0.01s) - time of turn
+
+        Default value: 150 (1.5 seconds)
+      </Help>
+    </Value>
+
+    <Value type="list" genre="config" instance="1" index="153" label="Set slats back to previous position" value="1" size="1">
+      <Help>
+        For Venetian blinds (parameter 151 set to 2) the parameter determines slats positioning in various situations.
+        The parameter is irrelevant for other modes.
+      </Help>
+      <Item label="Only in case of the main controller operation" value="0"/>
+      <Item label="In case of the main controller operation, momentary switch operation, or when the limit switch is reached." value="1"/>
+      <Item label="In case of the main controller operation, momentary switch operation, when the limit switch is reached or after receiving the Switch Multilevel Stop control frame" value="2"/>
+    </Value>
+
+    <Value type="short" genre="config" instance="1" index="154" label="Delay motor stop after reaching end switch" value="10" min="0" max="255" size="2">
+      <Help>
+        The parameter determines the time after which the motor will be stopped after end switch contacts are closed.
+
+        1-255 (0.1s - 25.5 seconds)
+      </Help>
+    </Value>
+
+    <Value type="short" genre="config" instance="1" index="155" label="Motor operation detection" value="10" min="0" max="255" size="2">
+      <Help>
+        Power threshold interpreted as reaching a limit switch.
+
+        1-255 (1-255W) - report interval
+        0 - no detection
+
+        Default value: 10 (10W)
+      </Help>
+    </Value>
+
+    <Value type="int" genre="config" instance="1" index="156" label="Time of up movement" value="6000" min="1" max="65535" size="4">
+      <Help>
+        This parameter determines the time needed for roller blinds to reach the top.
+        For modes with positioning value is set automatically during calibration, otherwise, it must be set manually.
+
+        1-65535 (0.01 - 655.35 seconds)
+
+        Default value: 6000 (60 seconds)
+      </Help>
+    </Value>
+
+    <Value type="int" genre="config" instance="1" index="157" label="Time of down movement" value="6000" min="1" max="65535" size="4">
+      <Help>
+        This parameter determines the time needed for roller blinds to reach the bottom.
+        For modes with positioning value is set automatically during calibration, otherwise, it must be set manually.
+
+        1-65535 (0.01 - 655.35 seconds)
+
+        Default value: 6000 (60 seconds)
+      </Help>
+    </Value>
+
+    </CommandClass>
+    <!-- Association Groups -->
+    <CommandClass id="113">
+        <Associations num_groups="3">
+            <Group index="1" max_associations="1" label="Lifeline"/>
+            <Group index="2" max_associations="5" label="Roller Shutter"/>
+            <Group index="3" max_associations="5" label="Slats"  />
+        </Associations>
+    </CommandClass>
+    <!-- Manufacturer Proprietary, sent when configuring "Fibaro Command Class" -->
+    <CommandClass id="145">
+        <Value genre="user" type="byte" instance="1" index="0" label="Venetian Blind slat position" value="0" min="0" max="100" units="%" />
+        <Value genre="user" type="byte" instance="1" index="1" label="Venetian blind tilt position" value="0" min="0" max="100" units="%" />
+    </CommandClass>
+</Product>
