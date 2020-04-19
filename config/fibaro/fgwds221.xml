@@ -3,6 +3,7 @@
     <!--
     Fibaro FGWDSEU-221 Walli Double Switch
 	https://products.z-wavealliance.org/products/3662
+	https://products.z-wavealliance.org/products/3395
     -->
 	
     <!-- COMMAND_CLASS_SWITCH_MULTILEVEL. This class is in the list reported by the device, but it does not respond to requests -->
