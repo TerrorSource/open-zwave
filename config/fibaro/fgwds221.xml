@@ -21,7 +21,7 @@
             <Help>This parameter determines maximum active power. Exceeding it results in the LED frame flashing violet. Function is active only when parameter 11 is set to 8 or 9.</Help>
         </Value>
 		
-        <Value type="short" genre="config" instance="1" index="11" label="LED frame – colour when ON" value="1" min="0" max="9" size="1">
+        <Value type="list" genre="config" instance="1" index="11" label="LED frame – colour when ON" value="1" min="0" max="9" size="1">
             <Help>This parameter defines the LED colour when thedevice is ON. When set to 8 or 9, LED frame colour will change depending on he measured power and parameter 10. Other colours are set permanently and do not depend on power consumption.</Help>
             <Item label="LED disabled" value="0"/>
             <Item label="White" value="1"/>
@@ -35,7 +35,7 @@
             <Item label="colour changes in steps depending on measured power" value="9"/>
         </Value>
 		
-        <Value type="short" genre="config" instance="1" index="12" label="LED frame – colour when OFF" value="0" min="0" max="7" size="1">
+        <Value type="list" genre="config" instance="1" index="12" label="LED frame – colour when OFF" value="0" min="0" max="7" size="1">
             <Help>This parameter defines the LED colour when the device is OFF.</Help>
             <Item label="LED disabled" value="0"/>
             <Item label="White" value="1"/>
